@@ -1,0 +1,22 @@
+var TASKS = [
+  [{t:"اكتب سطر يطبع كلمة Welcome على الشاشة.",sol:'System.out.println("Welcome");'},
+   {t:"اكتب كود يطبع Hi في سطر، وتحته Bye في سطر ثاني.",sol:'System.out.println("Hi");\nSystem.out.println("Bye");'}],
+  [{t:"سوّ متغير int اسمه age وحط فيه 20، وبعدين اطبعه.",sol:'int age = 20;\nSystem.out.println(age);'},
+   {t:"سوّ متغير اسمه points فيه 5، بعدين غيّر قيمته إلى 12، واطبعه.",sol:'int points = 5;\npoints = 12;\nSystem.out.println(points);'}],
+  [{t:"سوّ متغير String اسمه name فيه اسمك بالإنجليزي، واطبعه.",sol:'String name = "Ali";\nSystem.out.println(name);'},
+   {t:"سوّ متغير String اسمه planet فيه Mars، واطبع Hello Mars باستخدام علامة +",sol:'String planet = "Mars";\nSystem.out.println("Hello " + planet);'}],
+  [{t:"سوّ متغيرين: a فيه 8 و b فيه 5، واطبع مجموعهم.",sol:'int a = 8;\nint b = 5;\nSystem.out.println(a + b);'},
+   {t:"اطبع ناتج 6 ضرب 7.",sol:'System.out.println(6 * 7);'}],
+  [{t:"سوّ متغير temp فيه 35، وإذا كان أكبر من 30 اطبع Hot.",sol:'int temp = 35;\nif (temp > 30) {\n    System.out.println("Hot");\n}'},
+   {t:"سوّ متغير code فيه 1234، وإذا كان يساوي 1234 اطبع Open.",sol:'int code = 1234;\nif (code == 1234) {\n    System.out.println("Open");\n}'}],
+  [{t:"سوّ متغير score فيه 45. إذا كان 50 أو أكثر اطبع Pass، وإلا اطبع Fail.",sol:'int score = 45;\nif (score >= 50) {\n    System.out.println("Pass");\n} else {\n    System.out.println("Fail");\n}'},
+   {t:"سوّ متغير fuel فيه أي رقم. إذا كان أكبر من 0 اطبع Go، وإلا اطبع Stop.",sol:'int fuel = 10;\nif (fuel > 0) {\n    System.out.println("Go");\n} else {\n    System.out.println("Stop");\n}'}],
+  [{t:"استخدم for عشان تطبع Hello خمس مرات.",sol:'for (int i = 1; i <= 5; i++) {\n    System.out.println("Hello");\n}'},
+   {t:"استخدم for عشان تطبع الأرقام من 1 إلى 10.",sol:'for (int i = 1; i <= 10; i++) {\n    System.out.println(i);\n}'}],
+  [{t:"استخدم while عشان تعد تنازلي من 5 إلى 1.",sol:'int n = 5;\nwhile (n >= 1) {\n    System.out.println(n);\n    n--;\n}'},
+   {t:"سوّ متغير fuel فيه 20. وطول ما هو أكبر من 0، اطبع Flying ونقّصه 5.",sol:'int fuel = 20;\nwhile (fuel > 0) {\n    System.out.println("Flying");\n    fuel = fuel - 5;\n}'}],
+  [{t:"سوّ مصفوفة int فيها 3 و 6 و 9، واطبع أول رقم فيها.",sol:'int[] nums = {3, 6, 9};\nSystem.out.println(nums[0]);'},
+   {t:"سوّ مصفوفة String فيها ثلاث أسماء، واطبعها كلها باستخدام for.",sol:'String[] names = {"Ali", "Sara", "Omar"};\nfor (int i = 0; i < names.length; i++) {\n    System.out.println(names[i]);\n}'}],
+  [{t:"سوّ دالة اسمها hello تطبع Hello، وبعدين نادها مرتين.",sol:'static void hello() {\n    System.out.println("Hello");\n}\n\nhello();\nhello();'},
+   {t:"سوّ دالة اسمها triple تاخذ رقم وترجّع الرقم ضرب 3، واطبع triple(4).",sol:'static int triple(int x) {\n    return x * 3;\n}\n\nSystem.out.println(triple(4));'}]
+];
