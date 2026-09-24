@@ -60,6 +60,7 @@ function runAct(i, k) {
 
 function result(i, icon, title, text, againFn, againLabel, top) {
   hideDock();
+  playSound("win");
   app.innerHTML = '<section class="win"><div class="big">' + icon + "</div>" + (top || "") + "<h2>" + title + "</h2><p>" + text + "</p>" +
     progressBlock(i) + '<button class="btn ghost" id="again">' + (againLabel || "العب مرة ثانية") + "</button></section>";
   bindProgress(i);

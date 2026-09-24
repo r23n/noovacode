@@ -17,6 +17,7 @@ function tfGame(i) {
           else if (x === b) x.classList.add("wrong");
         });
         if (ok) { score++; addXp(5); }
+        playSound(ok ? "good" : "bad");
         var last = idx === items.length - 1;
         dock.className = "dock " + (ok ? "good" : "bad");
         dock.innerHTML = '<div class="dock-in"><h3>' + (ok ? 'صح!<span class="gain">+5 ⚡</span>' : "مو هذي") + "</h3>" +
@@ -66,11 +67,13 @@ function matchGame(i) {
         if (sel === null) { msg = "اختر الكود أول من فوق 👆"; show(); return; }
         var k = +b.dataset.o;
         if (k === sel) {
+          playSound("good");
           matched.push(k);
           if (!pairMiss[k]) addXp(5);
           sel = null; msg = "صح! " + (pairMiss[k] ? "" : "+5 ⚡");
           if (matched.length === pairs.length) { finish(); return; }
         } else {
+          playSound("bad");
           miss++; pairMiss[sel] = true;
           msg = "مو هذي. تتبّع الكود سطر سطر وجرّب نتيجة ثانية.";
         }
@@ -106,6 +109,7 @@ function bugGame(i) {
       b.onclick = function () {
         var n = +b.dataset.l;
         if (n === it.bad) {
+          playSound("good");
           b.classList.add("right");
           app.querySelectorAll(".bugline").forEach(function (x) { x.disabled = true; });
           if (!itemMiss) addXp(10);
@@ -117,6 +121,7 @@ function bugGame(i) {
             '<button class="btn" id="nx">' + (last ? "شوف النتيجة" : "الكود الجاي") + "</button></div>";
           document.getElementById("nx").onclick = function () { if (last) finish(); else { idx++; show(); } };
         } else {
+          playSound("bad");
           b.classList.add("wrong"); b.disabled = true;
           miss++; itemMiss = true;
           dock.className = "dock bad";
@@ -152,6 +157,7 @@ function cardGame(i) {
       : '<div class="dock-in"><button class="btn" id="flip">اقلب البطاقة</button></div>';
     if (flipped) {
       document.getElementById("know").onclick = function () {
+        playSound("good");
         deck.shift(); addXp(2); flipped = false;
         if (!deck.length) finish(); else show();
       };

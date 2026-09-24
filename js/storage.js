@@ -4,7 +4,7 @@ function blankSys() {
 }
 var SAVE_V = 3;
 var resetNotice = false; 
-function fresh() { return { v: SAVE_V, xp: 0, nb: [], cs: C.map(blankSys) }; }
+function fresh() { return { v: SAVE_V, xp: 0, sound: true, nb: [], cs: C.map(blankSys) }; }
 function load() {
   try {
     var raw = localStorage.getItem(KEY);
@@ -21,6 +21,7 @@ function load() {
       return st;
     });
     if (typeof data.xp !== "number") data.xp = 0;
+    if (typeof data.sound !== "boolean") data.sound = true;
     if (!Array.isArray(data.nb)) data.nb = [];
     return data;
   } catch (e) { return null; }

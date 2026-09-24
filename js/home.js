@@ -17,6 +17,7 @@ function home() {
   }).join("");
 
   var cta = next === -1 ? "" : '<button class="btn" id="go">' + (started ? "كمّل الإصلاح" : "ابدأ الإصلاح") + "</button>";
+  var soundLabel = S.sound === false ? "🔇 الصوت متوقف" : "🔊 الصوت يعمل";
   var nb = S.nb.length
     ? '<button class="act nb-row" id="nb"><span class="ico">📓</span><span class="t"><b>دفتر أخطائي</b><small>الأسئلة اللي غلطت فيها، راجعها لين تتقنها</small></span><span class="st">' + arNum(S.nb.length) + "</span></button>"
     : "";
@@ -32,7 +33,7 @@ function home() {
     '<div class="muted" style="font-size:.9rem;margin-top:6px">خلصت ' + arNum(stagesDone()) + " من " + arNum(C.length * ACTS.length) + " مرحلة. كل مرحلة ترفع الطاقة.</div>" +
     '<div class="stats"><span>⚡ النقاط <b>' + S.xp + '</b></span><span>⭐ النجوم <b>' + starCount() + "/" + (C.length * 3) +
     '</b></span><span>✓ دروس مكتملة <b>' + masteredCount() + "/" + C.length + "</b></span></div></section>" +
-    cta + nb + '<nav class="station">' + mods + "</nav>" +
+    cta + nb + '<button class="link sound-toggle" id="sound" aria-pressed="' + (S.sound !== false) + '">' + soundLabel + '</button><nav class="station">' + mods + "</nav>" +
     (started ? '<div class="foot"><button class="link" id="reset">ابدأ من الصفر</button></div>' : "");
 
   var go = document.getElementById("go");
@@ -41,6 +42,12 @@ function home() {
   if (okn) okn.onclick = function () { resetNotice = false; home(); };
   var nbb = document.getElementById("nb");
   if (nbb) nbb.onclick = notebook;
+  var sound = document.getElementById("sound");
+  if (sound) sound.onclick = function () {
+    S.sound = S.sound === false;
+    save();
+    home();
+  };
   app.querySelectorAll(".mod").forEach(function (b) {
     b.onclick = function () { var i = +b.dataset.i; if (isOpen(i)) folder(i); };
   });

@@ -28,6 +28,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible{outline:3px solid var(--ok);outline-offset:3px}
 #app{max-width:560px;margin:0 auto;padding:20px 18px 140px}
+#app> :first-child{animation:page-in .32s ease both}
 h1,h2,h3{font-family:var(--head);line-height:1.25;margin:0}
 .muted{color:var(--muted)}
 
@@ -58,9 +59,13 @@ h1,h2,h3{font-family:var(--head);line-height:1.25;margin:0}
 @keyframes blink{50%{opacity:.25}}
 
 .btn{display:block;width:100%;border:0;border-radius:14px;padding:14px 18px;font-family:var(--head);font-size:1.15rem;font-weight:700;background:var(--ok);color:var(--on-ok)}
+.btn,.mod,.act,.opt,.tfb,.chip{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background-color .18s ease}
+.btn:not(:disabled):hover,.mod:not(:disabled):hover,.act:not(:disabled):hover,.opt:not(:disabled):hover,.tfb:not(:disabled):hover,.chip:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(23,32,63,.12)}
+.btn:not(:disabled):active,.mod:not(:disabled):active,.act:not(:disabled):active,.opt:not(:disabled):active,.tfb:not(:disabled):active,.chip:not(:disabled):active{transform:translateY(0) scale(.98)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .link{background:none;border:0;color:var(--muted);text-decoration:underline;padding:8px;font-size:.9rem}
+.sound-toggle{display:block;margin:9px auto 14px}
 .foot{text-align:center;margin-top:18px}
 
 .top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
@@ -168,6 +173,7 @@ pre.code{direction:ltr;text-align:left;margin:0;background:var(--code-bg);color:
 .ai-box{background:var(--panel);border:1px solid var(--line);border-right:4px solid var(--ok);border-radius:14px;padding:12px 14px;margin:10px 0}
 .ai-box .code{margin:8px 0}
 .ai-p{white-space:pre-wrap;margin:6px 0}
+@keyframes page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .ai-p code,.msg code{font-family:var(--mono);background:var(--panel2);border-radius:6px;padding:0 5px;font-size:.92em}
 .ai-err{color:var(--bad);font-weight:600}
 .thinking{color:var(--muted)}

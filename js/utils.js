@@ -56,6 +56,28 @@ function hideDock() { dock.className = ""; dock.innerHTML = ""; refresh = null; 
 function toTop() { window.scrollTo(0, 0); }
 function addXp(n) { S.xp += n; save(); }
 
+var audioCtx = null;
+function playSound(kind) {
+  if (S.sound === false) return;
+  var Audio = window.AudioContext || window.webkitAudioContext;
+  if (!Audio) return;
+  try {
+    audioCtx = audioCtx || new Audio();
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    var now = audioCtx.currentTime, osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+    var good = kind === "good", win = kind === "win";
+    osc.type = win ? "triangle" : "sine";
+    osc.frequency.setValueAtTime(good ? 620 : win ? 520 : 180, now);
+    if (win) osc.frequency.exponentialRampToValueAtTime(820, now + .18);
+    gain.gain.setValueAtTime(.0001, now);
+    gain.gain.exponentialRampToValueAtTime(good || win ? .07 : .045, now + .02);
+    gain.gain.exponentialRampToValueAtTime(.0001, now + (win ? .24 : .13));
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + (win ? .25 : .14));
+  } catch (e) {}
+}
+
 function actDone(i, k) {
   if (!isOpen(i)) return false;
   var n = actIndex(k);

@@ -72,6 +72,7 @@ function renderQuestion(o) {
     var title = ok
       ? "صح!" + (r.gain ? '<span class="gain">+' + r.gain + " ⚡</span>" : "") + (r.bonus ? ' <span class="gain">🔥 مكافأة سلسلة</span>' : "")
       : "مو هذي";
+    playSound(ok ? "good" : "bad");
     dock.className = "dock " + (ok ? "good" : "bad");
     dock.innerHTML = '<div class="dock-in"><h3>' + title + "</h3>" + (ok ? "" : correct) + "<p>" + esc(q.why) + "</p>" +
       (ok ? "" : explainHtml()) + '<button class="btn" id="cont">' + (r.nextLabel || "كمّل") + "</button></div>";

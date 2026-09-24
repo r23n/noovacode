@@ -29,12 +29,14 @@ function lesson(i, mode) {
     b.onclick = function () {
       var msg = document.getElementById("check-msg");
       if (+b.dataset.ck === cq.answer) {
+        playSound("good");
         b.classList.add("right");
         app.querySelectorAll("[data-ck]").forEach(function (x) { x.disabled = true; });
         st.lesson = true; addXp(5);
         msg.innerHTML = '<p class="ok-txt">صح! ' + esc(cq.why) + " الدرس اكتمل ✓</p>" + progressBlock(i);
         bindProgress(i);
       } else {
+        playSound("bad");
         b.classList.add("wrong"); b.disabled = true;
         msg.innerHTML = '<p class="bad-txt">مو هذي. ارجع للمثال فوق واقرأ الملاحظات، بعدين جرّب مرة ثانية.</p>';
       }
